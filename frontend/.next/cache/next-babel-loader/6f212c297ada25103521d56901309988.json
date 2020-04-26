@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\nimport Users from \"../components/users\";\n\nconst Home = props => __jsx(\"div\", null, __jsx(\"p\", null, \"GraphQL Demo Page\"), __jsx(Users, null));\n\nexport default Home;","map":null,"metadata":{},"sourceType":"module"}

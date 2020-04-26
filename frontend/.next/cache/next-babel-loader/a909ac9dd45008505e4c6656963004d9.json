@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React, { Component } from \"react\";\nimport Query from \"react-apollo\";\nexport default class Users extends Component {\n  redner() {\n    return __jsx(\"div\", null, \"Users page\");\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

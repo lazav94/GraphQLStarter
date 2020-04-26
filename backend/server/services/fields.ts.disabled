@@ -1,0 +1,13 @@
+// import graphQLFields from "graphql-fields";
+
+// const getProjectionObject = (info: any) => {
+//   const fields: any = graphQLFields(info);
+//   console.log(fields);
+// };
+
+// const getQuerySelections = ({ fieldNodes }: any): string =>
+//   fieldNodes
+//     .map((node: any) => node.selectionSet.selectons)
+//     .flat()
+//     .map((s: any) => s?.name.value)
+//     .join(" ");
