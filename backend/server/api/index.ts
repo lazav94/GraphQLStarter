@@ -1,23 +1,17 @@
-import fs from "fs";
 import logger from "../services/logger";
 import User from "./User";
 import Contract from "./Contract";
 import BillingTransaction from "./BillingTransaction";
+import {
+  concatenateTypeDefs,
+  makeExecutableSchema,
+  gql,
+} from "apollo-server-express";
 
-// Number on files/folder minus this one (index.ts)
-const foldersInAPIFolder: number = fs.readdirSync(__dirname).length - 1;
-logger.info(fs.readdirSync(__dirname));
-logger.info(foldersInAPIFolder.toString());
 // When new API is added import it and add it to this array
 const API = [User, BillingTransaction, Contract];
 
-if (foldersInAPIFolder !== API.length) {
-  logger.error("Check server/api/index.ts did you import all APIs");
-  // TODO see why readdirSync gets deleted files!!!
-  // process.exit(-3);
-}
-
-export const resolvers = API.reduce(
+const resolvers = API.reduce(
   (prev, { resolvers }) => {
     prev = {
       ...prev,
@@ -30,18 +24,38 @@ export const resolvers = API.reduce(
   { Query: {}, Mutation: {} }
 );
 
-// console.log("Resolvers: ", resolvers);
-
-export const schemas = `
-  # Custom types
-  ${API.map(({ schema }) => schema.Types).join("")}
-  # Queries
+// Just dummy default schema for merging
+const defaultSchema = gql`
   type Query {
-    hello: String!
-    ${API.map(({ schema }) => schema.Query).join("")}
+    _emptyString: String
   }
-  # Mutations
   type Mutation {
-    ${API.map(({ schema }) => schema.Mutation).join("")}
+    _emptyString: String
   }
 `;
+export const typeDefs = concatenateTypeDefs([
+  defaultSchema,
+  ...API.map((api) => api.schema),
+]);
+
+export const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
+
+// export const schema = makeExecutableSchema({
+//   typeDefs: gql`
+//   # Custom types
+//   ${API.map(({ schema }) => schema.Types).join("")}
+//   # Queries
+//   type Query {
+//     hello: String!
+//     ${API.map(({ schema }) => schema.Query).join("")}
+//   }
+//   # Mutations
+//   type Mutation {
+//     ${API.map(({ schema }) => schema.Mutation).join("")}
+//   }
+// `,
+//   resolvers,
+// });

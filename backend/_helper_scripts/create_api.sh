@@ -70,14 +70,14 @@ EOF
 
 # Schema
 cat > ${API_NAME}.schema.ts <<EOF
-export default {
-  Types: \`
-  \`,
-  Query: \`
-  \`,
-  Mutation: \`
-  \`,
-};
+import { gql } from "apollo-server-express";
+
+export default gql\`
+  extend type Query {
+  }
+  extend type Mutation {
+  }
+\`;
 EOF
 
 # Service
