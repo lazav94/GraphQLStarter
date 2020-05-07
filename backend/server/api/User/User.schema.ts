@@ -16,6 +16,7 @@ export default gql`
     contracts: [Contract!]!
   }
   extend type Query {
+    hello: String
     getUserById(id: ID!): User
     getUserByEmail(email: String!): User
     getUsers: [User!]!

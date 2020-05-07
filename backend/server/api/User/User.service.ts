@@ -24,6 +24,7 @@ export default class UserService {
   ): Promise<IUser | null> => {
     console.log("DEBUG", id, lean);
     const user = User.findById(id);
+    // Get C1 user
     if (lean) user.lean();
     return user;
   };

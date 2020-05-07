@@ -2,9 +2,10 @@
   "env": {
     "node": true,
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -28,7 +29,7 @@
     "max-len": [
       "error",
       {
-        "code": 200
+        "code": 120
       }
     ],
     "no-useless-escape": "warn",

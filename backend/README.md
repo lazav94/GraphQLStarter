@@ -99,7 +99,9 @@ Uninstall
 - [Apollo Test Documentation](https://www.apollographql.com/docs/apollo-server/testing/mocking/)
 - [GraphQL Test Documentation](https://graphql.org/blog/mocking-with-graphql/)
 
----
+### 🔒 Security
+
+- [Appollo security documentation](https://www.apollographql.com/docs/apollo-server/security/authentication/)
 
 ### Stuf that I don't thing is a good choice for us
 

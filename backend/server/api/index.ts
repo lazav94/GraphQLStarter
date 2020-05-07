@@ -2,11 +2,7 @@ import logger from "../services/logger";
 import User from "./User";
 import Contract from "./Contract";
 import BillingTransaction from "./BillingTransaction";
-import {
-  concatenateTypeDefs,
-  makeExecutableSchema,
-  gql,
-} from "apollo-server-express";
+import { concatenateTypeDefs, gql } from "apollo-server-express";
 
 // When new API is added import it and add it to this array
 const API = [User, BillingTransaction, Contract];
@@ -38,10 +34,10 @@ export const typeDefs = concatenateTypeDefs([
   ...API.map((api) => api.schema),
 ]);
 
-export const schema = makeExecutableSchema({
+export default {
   typeDefs,
   resolvers,
-});
+};
 
 // export const schema = makeExecutableSchema({
 //   typeDefs: gql`

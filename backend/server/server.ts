@@ -2,42 +2,25 @@
 // trace.init({ plugins: false });
 // tracer.init({});
 import express, { Application } from "express";
-import { ApolloServer } from "apollo-server-express";
 import logger from "./services/logger";
 import { startDB } from "./services/db";
-import { schema } from "./api";
-import * as middleware from "./services/middleware";
+import { setupGraphQLServer } from "./graphql";
 
 // Constant variables
 // TODO: put this in config.json
 const port = process.env.PORT || "4000";
 
-// Express (apollo) setup
-const server = new ApolloServer({
-  // typeDefs,
-  schema,
-  debug: true, // Its true by default
-  tracing: true,
-});
 const app: Application = express();
+// app.use('datatrans/', )
 // app.use(cors());
 // app.use(express.json());
-
-// TODO: Apply custom middleware to log Queries from GraphQl (only in dev enviroment)
-// app.use(server.graphqlPath, middleware.logQuery);
 // TODO: Configure better (resticted) cors settings
-server.applyMiddleware({
-  app,
-  cors: {
-    credentials: true,
-    origin: true,
-  },
-  path: "/",
-  // onHealthCheck: () => do_something()
-});
 
 // Starting Sever
 (async () => {
+  // Apply middleware and return graphql apollo server
+  const graphQLServer = setupGraphQLServer(app);
+
   // Start DB - If connection failed don't start server
   await startDB();
 
@@ -47,7 +30,7 @@ server.applyMiddleware({
       process.exit(-1);
     }
     logger.info(
-      `📦 GraphQL API server is 🏃‍ at http://localhost:${port}${server.graphqlPath}`
+      `📦 GraphQL API server is 🏃‍ at http://localhost:${port}/${graphQLServer.graphqlPath}`
     );
   });
 })();
