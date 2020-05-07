@@ -53,7 +53,6 @@ class User extends Component {
           {(createUser, { loading, error }) => (
             <Form
               onSubmit={async (e) => {
-                console.log("MANIJAK");
                 e.preventDefault();
                 const user = await createUser();
                 console.log(user);

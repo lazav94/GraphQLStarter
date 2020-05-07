@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+
 const ALL_USERS_QUERY = gql`
   query ALL_USERS_QUERY {
     getUsers {
-      id
+      _id
       firstname
       lastname
-      #billingTransaction {
-      #  payment
-      #}
     }
   }
 `;
