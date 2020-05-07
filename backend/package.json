@@ -11,7 +11,8 @@
     "lint": "eslint server/*.ts",
     "lint:fix": "eslint server/*.ts",
     "prettify": "prettier server/*.ts --write",
-    "test": "jest"
+    "test": "jest",
+    "oo": "echo Something"
   },
   "author": "Lazar Vasic <lazav94@gmail.com> 🐉",
   "license": "ISC",
