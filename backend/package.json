@@ -22,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run cc"
+      "precommit": "npm run cc"
     }
   },
   "dependencies": {
