@@ -12,7 +12,7 @@
     "lint:fix": "eslint server/*.ts",
     "prettify": "prettier server/*.ts --write",
     "test": "jest",
-    "oo": "echo Something"
+    "pc": "echo 'OOO', lint-staged"
   },
   "author": "Lazar Vasic <lazav94@gmail.com> 🐉",
   "license": "ISC",
