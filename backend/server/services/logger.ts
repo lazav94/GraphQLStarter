@@ -1,7 +1,7 @@
 import * as winston from 'winston';
 
 // User better loger or better configuration
-const logger: winston.Logger =   winston.createLogger({
+const logger: winston.Logger = winston.createLogger({
   format: winston.format.combine(winston.format.splat(), winston.format.simple()),
   level: 'debug',
   transports: [
