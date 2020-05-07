@@ -1,10 +1,10 @@
 module.export = {
   linters: {
     '**/*.+(js|md|ts|css|graphql|yml|yaml|json)': [
-      'npm run oo',
+      'echo 11',
       'eslint --fix',
       'prettier --write',
-      'npm run oo',
+      'echo oooo',
       'jest --findRelatedTests',
       'git add',
     ],
